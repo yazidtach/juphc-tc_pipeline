@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: tax-pipeline-run
+spec:
+  pipelineRef:
+    name: tax-pipeline
+  params:
+    - name: image-name
+      value: us.icr.io/namespace/tax-app
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: tax-pvc
