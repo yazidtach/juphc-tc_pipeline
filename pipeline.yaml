@@ -9,11 +9,9 @@ spec:
         name: npminstall
     - name: run-unit-tests
       taskRef:
-        name: jasmine-tests
-      runAfter:
-        - install-dependencies
+        name: jasmine
+      runAfter: [install-dependencies]
     - name: build-docker-image
       taskRef:
         name: build
-      runAfter:
-        - run-unit-tests
+      runAfter: [run-unit-tests]
